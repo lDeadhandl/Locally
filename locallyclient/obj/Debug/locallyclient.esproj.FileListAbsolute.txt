@@ -1,0 +1,2 @@
+C:\Users\AndrewForster\Code\Locally\LocallyClient\obj\Debug\locallyclient.esproj.SuggestedBindingRedirects.cache
+C:\Users\AndrewForster\Code\Locally\LocallyClient\obj\Debug\locallyclient.esproj.CoreCompileInputs.cache
