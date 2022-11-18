@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Locally.Data;
 using Locally.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -11,6 +13,8 @@ namespace Locally.Services
     public class UserService
     {
         private readonly IMongoCollection<User> _usersCollection;
+
+        static HttpClient client = new HttpClient();
 
         public UserService(
             IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings)

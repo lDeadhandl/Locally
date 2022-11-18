@@ -1,11 +1,7 @@
+using Locally.Data;
 using Locally.Models;
 using Locally.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Locally.Controllers
 {
@@ -34,6 +30,7 @@ namespace Locally.Controllers
 
             return user;
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Post(User newUser)
