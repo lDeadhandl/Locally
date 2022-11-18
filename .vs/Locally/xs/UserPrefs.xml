@@ -3,14 +3,22 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Locally PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Locally/Data/User.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Locally/Controllers/TeamsController.cs">
     <Files>
-      <File FileName="Locally/Controllers/UserController.cs" Line="30" Column="1" />
-      <File FileName="Locally/Services/GamesService.cs" Line="30" Column="23" />
-      <File FileName="Locally/Controllers/GamesController.cs" Line="7" Column="20" />
+      <File FileName="Locally/Controllers/UserController.cs" />
+      <File FileName="Locally/Services/GamesService.cs" />
+      <File FileName="Locally/Controllers/GamesController.cs" />
       <File FileName="Locally/Models/Home.cs" />
-      <File FileName="Locally/Services/UserService.cs" Line="31" Column="1" />
-      <File FileName="Locally/Data/User.cs" Line="15" Column="2" />
+      <File FileName="Locally/Services/UserService.cs" />
+      <File FileName="Locally/Data/User.cs" />
+      <File FileName="Locally/Controllers/TeamsController.cs" Line="18" Column="63" />
+      <File FileName="Locally/Services/TeamsService.cs" Line="31" Column="58" />
+      <File FileName="Locally/Models/TeamsObject.cs" />
+      <File FileName="Locally/Models/GamesObject.cs" />
+      <File FileName="Locally/Models/DivisionsObject.cs" />
+      <File FileName="Locally/Models/Away.cs" />
+      <File FileName="Locally/Models/ConferencesObject.cs" Line="14" Column="6" />
+      <File FileName="Locally/Program.cs" Line="16" Column="36" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +26,9 @@
           <Node name="Locally" expanded="True">
             <Node name="Locally" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="TeamsController.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />

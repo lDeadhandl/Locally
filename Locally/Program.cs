@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<GamesService>();
+builder.Services.AddSingleton<TeamsService>();
+
 
 builder.Services.Configure<LocallyDatabaseSettings>(
                 builder.Configuration.GetSection("LocallyDatabase"));

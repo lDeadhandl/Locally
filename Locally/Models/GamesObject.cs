@@ -12,7 +12,6 @@ namespace Locally.Models
         public string? Scheduled { get; set; }
         public Home? Home { get; set; }
         public Away? Away { get; set; }
-
     }
 }
 
