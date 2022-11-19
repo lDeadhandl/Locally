@@ -37,37 +37,5 @@ namespace Locally.Controllers
 
             return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
         }
-
-        //[HttpPut("{name}")]
-        //public async Task<IActionResult> Update(string name, User updatedUser)
-        //{
-        //    var user = await _userService.GetAsync(name);
-
-        //    if (user is null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    updatedUser.Name = user.Name;
-
-        //    await _userService.UpdateAsync(name, updatedUser);
-
-        //    return NoContent();
-        //}
-
-        //[HttpDelete("{id:length(24)}")]
-        //public async Task<IActionResult> Delete(string id)
-        //{
-        //    var user = await _userService.GetAsync(id);
-
-        //    if (user is null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    await _userService.RemoveAsync(id);
-
-        //    return NoContent();
-        //}
     }
 }

@@ -13,6 +13,6 @@ namespace Locally.Models
         public string Name { get; set; } = null!;
 
         [BsonElement("Favorites")]
-        public List<Favorites> Favorites { get; set; } = null!;
+        public Favorites? Favorites { get; set; } = null!;
     }
 }
