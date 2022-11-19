@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Locally.Data;
 using Locally.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -38,10 +37,10 @@ namespace Locally.Services
         public async Task CreateAsync(User newUser) =>
             await _usersCollection.InsertOneAsync(newUser);
 
-        public async Task UpdateAsync(string name, User updatedUser) =>
-            await _usersCollection.ReplaceOneAsync(x => x.Name == name, updatedUser);
+        //public async Task UpdateAsync(string name, User updatedUser) =>
+        //    await _usersCollection.ReplaceOneAsync(x => x.Name == name, updatedUser);
 
-        public async Task RemoveAsync(string id) =>
-            await _usersCollection.DeleteOneAsync(x => x.Id == id);
+        //public async Task RemoveAsync(string id) =>
+        //    await _usersCollection.DeleteOneAsync(x => x.Id == id);
     }
 }

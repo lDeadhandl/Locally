@@ -1,5 +1,4 @@
 ﻿using System;
-using Locally.Data;
 using Locally.Models;
 using Locally.Services;
 using Microsoft.AspNetCore.Mvc;

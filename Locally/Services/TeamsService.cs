@@ -1,5 +1,4 @@
 ﻿using System;
-using Locally.Data;
 using Locally.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
