@@ -1,4 +1,5 @@
 ﻿using System;
+using Locally.Data;
 using Locally.Models;
 using Locally.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -14,17 +15,36 @@ namespace Locally.Controllers
         public TeamsController(TeamsService teamService) =>
             _teamsService = teamService;
 
-        [HttpGet()]
-        public async Task<ActionResult<ConferencesObject>> GetConferences()
-        {
-            var conferences = await _teamsService.GetConferences();
+        [HttpGet]
+        public async Task<List<Team>> Get() =>
+            await _teamsService.GetAsync();
 
-            if (conferences is null)
+        [HttpGet("{name}")]
+        public async Task<ActionResult<Team>> Get(string name)
+        {
+            var teams = await _teamsService.GetAsync(name);
+
+            if (teams is null)
             {
                 return NotFound();
             }
 
-            return conferences;
+            return teams;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post()
+        {
+            var teams = await _teamsService.GetTeams();
+
+            if (teams is null)
+            {
+                return NotFound();
+            }
+
+            await _teamsService.CreateAsync(teams);
+
+            return Ok();
         }
     }
 }

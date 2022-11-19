@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Locally.Models;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Locally.Data
@@ -11,5 +12,8 @@ namespace Locally.Data
 
         [BsonElement("Name")]
         public string Name { get; set; } = null!;
+
+        [BsonElement("Favorites")]
+        public List<Favorites> Favorites { get; set; } = null!;
     }
 }

@@ -14,7 +14,20 @@ namespace Locally.Controllers
             _gamesService = gameService;
 
         [HttpGet()]
-        public async Task<ActionResult<GamesObject>> GetGames()
+        public async Task<ActionResult<List<Game>>> GetGames()
+        {
+            var games = await _gamesService.GetAsync();
+
+            if (games is null)
+            {
+                return NotFound();
+            }
+
+            return games;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post()
         {
             var games = await _gamesService.GetGames();
 
@@ -23,7 +36,9 @@ namespace Locally.Controllers
                 return NotFound();
             }
 
-            return games;
+            await _gamesService.CreateAsync(games);
+
+            return Ok();
         }
     }
 }

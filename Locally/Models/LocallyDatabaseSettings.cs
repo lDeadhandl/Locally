@@ -12,5 +12,10 @@ namespace Locally.Models
         public string DatabaseName { get; set; } = null!;
 
         public string UsersCollectionName { get; set; } = null!;
+
+        public string TeamsCollectionName { get; set; } = null!;
+
+        public string GamesCollectionName { get; set; } = null!;
+
     }
 }

@@ -85,3 +85,47 @@ C:/Users/AndrewForster/Code/Locally/Locally/obj/Debug/net6.0/ref/Locally.dll
 /Users/stefanvladetic/Code/Locally/Locally/obj/Debug/net6.0/Locally.genruntimeconfig.cache
 /Users/stefanvladetic/Code/Locally/Locally/obj/Debug/net6.0/ref/Locally.dll
 /Users/stefanvladetic/Code/Locally/Locally/bin/Debug/net6.0/Newtonsoft.Json.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\appsettings.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Locally.exe
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Locally.deps.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Locally.runtimeconfig.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Locally.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Locally.pdb
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\DnsClient.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\MongoDB.Bson.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\MongoDB.Driver.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\SharpCompress.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Snappier.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\ZstdSharp.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\Stefan Vladetic\Code\Locally\Locally\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.csproj.AssemblyReference.cache
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.AssemblyInfoInputs.cache
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.AssemblyInfo.cs
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.csproj.CoreCompileInputs.cache
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets\msbuild.Locally.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets\msbuild.build.Locally.props
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Locally.props
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Locally.props
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\scopedcss\bundle\Locally.styles.css
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.csproj.CopyComplete
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\refint\Locally.dll
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.pdb
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\Locally.genruntimeconfig.cache
+C:\Users\Stefan Vladetic\Code\Locally\Locally\obj\Debug\net6.0\ref\Locally.dll

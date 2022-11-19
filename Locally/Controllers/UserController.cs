@@ -18,10 +18,10 @@ namespace Locally.Controllers
         public async Task<List<User>> Get() =>
             await _userService.GetAsync();
 
-        [HttpGet("{id:length(24)}")]
-        public async Task<ActionResult<User>> Get(string id)
+        [HttpGet("{name}")]
+        public async Task<ActionResult<User>> Get(string name)
         {
-            var user = await _userService.GetAsync(id);
+            var user = await _userService.GetAsync(name);
 
             if (user is null)
             {
@@ -31,7 +31,6 @@ namespace Locally.Controllers
             return user;
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Post(User newUser)
         {
@@ -40,19 +39,19 @@ namespace Locally.Controllers
             return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
         }
 
-        [HttpPut("{id:length(24)}")]
-        public async Task<IActionResult> Update(string id, User updatedUser)
+        [HttpPut("{name}")]
+        public async Task<IActionResult> Update(string name, User updatedUser)
         {
-            var user = await _userService.GetAsync(id);
+            var user = await _userService.GetAsync(name);
 
             if (user is null)
             {
                 return NotFound();
             }
 
-            updatedUser.Id = user.Id;
+            updatedUser.Name = user.Name;
 
-            await _userService.UpdateAsync(id, updatedUser);
+            await _userService.UpdateAsync(name, updatedUser);
 
             return NoContent();
         }

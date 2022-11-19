@@ -1,5 +1,7 @@
 ﻿using System;
 using Locally.Models;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -7,10 +9,11 @@ namespace Locally.Services
 {
 	public class GamesService
 	{
+        private readonly IMongoCollection<Game> _gamesCollection;
         private JsonSerializerSettings _serializerSettings;
         private HttpClient _client;
 
-        public GamesService()
+        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings)
         {
             // Set the serializer settings to the snake case which is what the spotify responses are formatted as
             _serializerSettings = new JsonSerializerSettings
@@ -23,15 +26,35 @@ namespace Locally.Services
 
             _client = new HttpClient();
 
-        }
+            var mongoClient = new MongoClient(
+                LocallyDatabaseSettings.Value.ConnectionString);
 
+            var mongoDatabase = mongoClient.GetDatabase(
+                LocallyDatabaseSettings.Value.DatabaseName);
+
+            _gamesCollection = mongoDatabase.GetCollection<Game>(
+                LocallyDatabaseSettings.Value.GamesCollectionName);
+        }
+            
         public async Task<GamesObject> GetGames()
         {
             var gamesJson = await _client.GetStringAsync("http://api.sportradar.us/nba/trial/v7/en/games/2022/REG/schedule.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
             var Games = JsonConvert.DeserializeObject<GamesObject>(gamesJson, _serializerSettings);
-           
+
+            //var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
+
             return Games;
         }
+
+        public async Task<List<Game>> GetAsync() =>
+            await _gamesCollection.Find(_ => true).ToListAsync();
+
+        //public async Task<Team?> GetAsync(string name) =>
+        //    await _teamsCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
+        
+        public async Task CreateAsync(GamesObject newGame) =>
+            await _gamesCollection.InsertManyAsync(newGame.Games);
     }
 }
 
