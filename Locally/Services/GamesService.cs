@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using Locally.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -11,9 +12,10 @@ namespace Locally.Services
 	{
         private readonly IMongoCollection<Game> _gamesCollection;
         private JsonSerializerSettings _serializerSettings;
+        private readonly UserService _userService;
         private HttpClient _client;
 
-        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings)
+        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings, UserService userService)
         {
             // Set the serializer settings to the snake case which is what the spotify responses are formatted as
             _serializerSettings = new JsonSerializerSettings
@@ -25,6 +27,8 @@ namespace Locally.Services
             };
 
             _client = new HttpClient();
+            _userService = userService;
+
 
             var mongoClient = new MongoClient(
                 LocallyDatabaseSettings.Value.ConnectionString);
@@ -45,6 +49,32 @@ namespace Locally.Services
             //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
 
             return Games;
+        }
+
+        public async Task<List<Game>> GetDailyGames(string name, string year, string month, string day)
+        {
+            var gamesJson = await _client.GetStringAsync($"http://api.sportradar.us/nba/trial/v7/en/games/{year}/{month}/{day}/schedule.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
+            var games = JsonConvert.DeserializeObject<GamesObject>(gamesJson, _serializerSettings).Games;
+
+            var user = await _userService.GetAsync(name);
+
+            var favoriteTeams = user.Favorites.Teams;
+            var tempGames = new List<Game>();
+
+            foreach (var t in favoriteTeams)
+            {
+                var awayGames = games.FirstOrDefault(x => x.Away.Id == t.Id);
+                var homeGames = games.FirstOrDefault(x => x.Home.Id == t.Id);
+                tempGames.Add(awayGames);
+                tempGames.Add(homeGames);
+            }
+
+            var dashboardGames = tempGames.Distinct().ToList().Where(x => x != null).ToList();
+            
+            //var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+            //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
+
+            return dashboardGames;
         }
 
         public async Task<List<Game>> GetAsync() =>

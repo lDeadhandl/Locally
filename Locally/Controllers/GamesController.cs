@@ -10,13 +10,15 @@ namespace Locally.Controllers
     {
         private readonly GamesService _gamesService;
 
-        public GamesController(GamesService gameService) =>
+        public GamesController(GamesService gameService)
+        {
             _gamesService = gameService;
+        }
 
         [HttpGet()]
-        public async Task<ActionResult<List<Game>>> GetGames()
+        public async Task<ActionResult<List<Game>>> GetDailyGames(string name, string year, string month, string day )
         {
-            var games = await _gamesService.GetAsync();
+            var games = await _gamesService.GetDailyGames(name, year, month, day);
 
             if (games is null)
             {
@@ -25,6 +27,19 @@ namespace Locally.Controllers
 
             return games;
         }
+
+        //[HttpGet()]
+        //public async Task<ActionResult<List<Game>>> GetGames()
+        //{
+        //    var games = await _gamesService.GetAsync();
+
+        //    if (games is null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return games;
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post()
