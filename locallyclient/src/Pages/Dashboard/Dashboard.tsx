@@ -4,11 +4,15 @@ import GameCard from "../../Components/GameCard/GameCardComponent";
 const Dashboard = () => {
   const [games, setGames] = useState([]);
 
+  var currentDate = new Date();
+
   useEffect(() => {
-    fetch("https://localhost:7242/api/Favorites/stefan")
+    fetch(
+      `https://localhost:7242/api/Games?name=strah&year=2022&month=11&day=21`
+    )
       .then((response) => response.json())
-      .then((user) => {
-        setGames(user.games);
+      .then((data) => {
+        setGames(data);
       });
   }, []);
 
