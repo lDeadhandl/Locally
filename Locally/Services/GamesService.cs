@@ -58,7 +58,13 @@ namespace Locally.Services
 
             var user = await _userService.GetAsync(name);
 
-            var favoriteTeams = user.Favorites.Teams;
+            var favoriteTeams = user.Favorites?.Teams;
+
+            if (favoriteTeams == null)
+            {
+                return new List<Game>();
+            }
+
             var tempGames = new List<Game>();
 
             foreach (var t in favoriteTeams)
@@ -70,7 +76,7 @@ namespace Locally.Services
             }
 
             var dashboardGames = tempGames.Distinct().ToList().Where(x => x != null).ToList();
-            
+
             //var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
             //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
 
