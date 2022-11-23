@@ -1,0 +1,33 @@
+.dashboard-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 19px;
+}
+
+.dashboard-card {
+  display: flex;
+  background-color: #303034;
+  border-radius: 18px;
+  width: 10.5rem;
+  height: 20rem;
+  white-space: normal;
+  margin: 10px 10px;
+}
+
+.card-content-left {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 255, 255, 0.108);
+  width: 40%;
+  height: 80%;
+}
+
+.card-content-right {
+  display: flex;
+  width: 60%;
+  height: 20rem;
+}
+
+.card-scores {
+  height: 20rem;
+}
