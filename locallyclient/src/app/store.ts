@@ -2,9 +2,9 @@
 // automatically takes your store and sets it up with the right
 // defaults ex. auto turns on redux dev tools extensions, thunk middleware,
 // dev checks like accidental mutations
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { apiSlice } from "../features/games/GamesApiSlice";
-import counterReducer from "../features/SomeFeatureSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import { apiSlice } from "./features/games/GamesApiSlice";
+import counterReducer from "./features/SomeFeatureSlice";
 
 export const store = configureStore({
   reducer: {
