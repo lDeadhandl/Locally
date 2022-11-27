@@ -1,14 +1,11 @@
-import React from "react";
 import "./App.css";
-import Dashboard from "./app/components/Dashboard/Dashboard";
+import Dashboard from "./app/components/Dashboard/DashboardComponent";
+import Header from "./app/components/Header/HeaderComponent";
 
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
-        <span className="App-header-logo">Logo.</span>
-        <span className="App-header-burger">+</span>
-      </div>
+      <Header></Header>
       <Dashboard></Dashboard>
     </div>
   );

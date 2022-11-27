@@ -1,24 +1,6 @@
 import { FC } from "react";
+import { IGame } from "../../types/types";
 import "./GameCardComponent.css";
-
-export interface IHome {
-  id: string;
-  name: string;
-  alias: string;
-}
-
-export interface IAway {
-  id: string;
-  name: string;
-  alias: string;
-}
-
-export interface IGame {
-  id: string;
-  scheduled: string;
-  home: IHome;
-  away: IAway;
-}
 
 export interface IGameCardProps {
   game: IGame;
