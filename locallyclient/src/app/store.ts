@@ -4,7 +4,7 @@
 // dev checks like accidental mutations
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./features/games/GamesApiSlice";
-import counterReducer from "./features/SomeFeatureSlice";
+import counterReducer from "./features/dailyGamesSlice";
 
 export const store = configureStore({
   reducer: {

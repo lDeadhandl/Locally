@@ -1,6 +1,6 @@
-export const getDailyGames = (name: string) => {
+export const getDailyGames = async (name: string) => {
   var currentDate = new Date();
-  const data = fetch(
+  const data = await fetch(
     `https://localhost:7242/api/Games?name=${name}&year=${currentDate.getFullYear()}&month=${
       currentDate.getMonth() + 1
     }&day=${currentDate.getDate()}`
@@ -10,5 +10,5 @@ export const getDailyGames = (name: string) => {
       return data;
     });
 
-  console.log(data);
+  return data;
 };
