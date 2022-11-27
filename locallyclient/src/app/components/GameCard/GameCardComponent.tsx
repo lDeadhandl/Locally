@@ -1,4 +1,6 @@
 import { FC } from "react";
+import dailyGamesSlice from "../../features/dailyGamesSlice";
+import { useAppSelector } from "../../hooks";
 import { IGame } from "../../types/types";
 import "./GameCardComponent.css";
 
@@ -7,6 +9,8 @@ export interface IGameCardProps {
 }
 
 export const GameCard: FC<IGameCardProps> = (game) => {
+  const g = useAppSelector((state) => state.counter.games);
+  console.log(g);
   return (
     <div className="dashboard-card">
       <div className="card-content-left">

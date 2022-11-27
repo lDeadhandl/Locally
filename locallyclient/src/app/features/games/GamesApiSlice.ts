@@ -16,7 +16,7 @@ export const apiSlice = createApi({
       // query<returntype, arguements we're passing in for parameter generator>
       fetchDailyGames: builder.query<IGame[], string | void>({
         query(name = "") {
-          return `/Games?name=${name}&year=2022&month=11&day=23`;
+          return `/Games?name=${name}&year=2022&month=11&day=27`;
         },
       }),
     };

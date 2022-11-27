@@ -7,22 +7,20 @@ interface dailyGamesState {
   status: string;
 }
 
+// export const todoAdded = () => {
+//   return {
+//     type: "dailygames/todoAdded",
+//     payload: todo,
+//   };
+// };
+
 const initialState: dailyGamesState = {
   games: [],
   status: "",
 };
 
-export const fetchDailyGames = createAsyncThunk(
-  "games/fetchDailyGames",
-  async (name: string) => {
-    const response = await getDailyGames(name);
-    console.log(response);
-    return response.games;
-  }
-);
-
-const counterSlice = createSlice({
-  name: "counter",
+const dailyGamesSlice = createSlice({
+  name: "dailyGames",
   initialState,
   reducers: {
     // increment
@@ -35,19 +33,14 @@ const counterSlice = createSlice({
     // amountAdded(state, actions: PayloadAction<number>) {
     //   state.value += actions.payload;
     // },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchDailyGames.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(fetchDailyGames.fulfilled, (state, action) => {
-        console.log("hi");
-      });
+    addGames(state, actions: PayloadAction<IGame[]>) {
+      state.games = actions.payload;
+      // console.log("here are the games" + state.games);
+    },
   },
 });
 
 // export const { incremented, amountAdded } = counterSlice.actions;
-export const {} = counterSlice.actions;
+export const { addGames } = dailyGamesSlice.actions;
 
-export default counterSlice.reducer;
+export default dailyGamesSlice.reducer;

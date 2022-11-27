@@ -1,23 +1,27 @@
+import { is } from "immer/dist/internal";
 import { Fragment, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getDailyGames } from "../../api/GamesController";
-import { fetchDailyGames } from "../../features/dailyGamesSlice";
+import { addGames } from "../../features/dailyGamesSlice";
 import { useFetchDailyGamesQuery } from "../../features/games/GamesApiSlice";
+import { useAppDispatch } from "../../hooks";
 import { IGame } from "../../types/types";
 import GameCard from "../GameCard/GameCardComponent";
 
 const Dashboard = () => {
   const [games, setGames] = useState<IGame[]>([]);
   const [isClicked, setIsClicked] = useState(false);
-  const dispatch = useDispatch();
+  const { data = [], isFetching } = useFetchDailyGamesQuery("stef");
 
-  var currentDate = new Date();
+  const dispatch = useAppDispatch();
 
-  var const x = dispatch(fetchDailyGames("stef"));
+  // console.log(data);
+  const handleClick = () => {
+    dispatch(addGames(data));
+    setGames(data);
+  };
   useEffect(() => {
-    const data = getDailyGames("stef");
-
-    console.log(data);
+    setGames(data);
   }, [isClicked]);
 
   return (
@@ -25,7 +29,7 @@ const Dashboard = () => {
       {games.map((game) => (
         <GameCard key={game.id} game={game}></GameCard>
       ))}
-      <button onClick={() => setIsClicked(!isClicked)}></button>
+      <button onClick={handleClick}></button>
     </div>
   );
 };
