@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IGame } from "../../types/types";
+import { IGame, ITeam } from "../../types/types";
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -11,7 +11,7 @@ export const apiSlice = createApi({
     //   return headers;
     // },
   }),
-  endpoints(builder) {
+  endpoints: (builder) => {
     var currentDate = new Date();
     return {
       // query<returntype, arguements we're passing in for parameter generator>
@@ -22,8 +22,23 @@ export const apiSlice = createApi({
           }&day=${currentDate.getDate()}`;
         },
       }),
+      fetchTeams: builder.query<ITeam[], void>({
+        query() {
+          return "/Teams";
+        },
+      }),
+      addFavoriteTeams: builder.query<void, string>({
+        query(name = "", team = "") {
+          console.log("im hit");
+          return `Favorites/${name}/${team}`;
+        },
+      }),
     };
   },
 });
 
-export const { useFetchDailyGamesQuery } = apiSlice;
+export const {
+  useFetchDailyGamesQuery,
+  useFetchTeamsQuery,
+  useAddFavoriteTeamsQuery,
+} = apiSlice;

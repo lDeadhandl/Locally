@@ -16,3 +16,11 @@ export interface IGame {
   home: IHome;
   away: IAway;
 }
+
+export interface ITeam {
+  id: string;
+  name: string;
+  market: string;
+  wins: number;
+  losses: number;
+}
