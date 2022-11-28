@@ -12,11 +12,14 @@ export const apiSlice = createApi({
     // },
   }),
   endpoints(builder) {
+    var currentDate = new Date();
     return {
       // query<returntype, arguements we're passing in for parameter generator>
       fetchDailyGames: builder.query<IGame[], string | void>({
         query(name = "") {
-          return `/Games?name=${name}&year=2022&month=11&day=27`;
+          return `/Games?name=${name}&year=${currentDate.getFullYear()}&month=${
+            currentDate.getMonth() + 1
+          }&day=${currentDate.getDate()}`;
         },
       }),
     };

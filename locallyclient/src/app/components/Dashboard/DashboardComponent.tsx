@@ -1,7 +1,6 @@
 import { is } from "immer/dist/internal";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDailyGames } from "../../api/GamesController";
 import { addGames } from "../../features/dailyGamesSlice";
 import { useFetchDailyGamesQuery } from "../../features/games/GamesApiSlice";
 import { useAppDispatch } from "../../hooks";
