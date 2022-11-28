@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  useAddFavoriteTeamsQuery,
+  useAddFavoriteTeamsMutation,
   useFetchTeamsQuery,
 } from "../../features/games/GamesApiSlice";
 import { ITeam } from "../../types/types";
@@ -12,18 +12,20 @@ const Header = () => {
   const [message, setMessage] = useState("");
 
   const { data = [], isFetching } = useFetchTeamsQuery();
+  const [addTeams, isloading] = useAddFavoriteTeamsMutation();
 
   // TODO: fix -> when backspacing last letter it displays all the teams
   const handleChange = (event: any) => {
     var teamList = data.filter((x) =>
       x.name.toLowerCase().includes(event.target.value.toLowerCase())
     );
+
     setTeams(teamList);
   };
 
   const handleClick = (s: any) => {
-    const {} = useAddFavoriteTeamsQuery("stef", s.target.innerHTML);
-
+    var vals = { name: "stef", team: s.target.innerHTML };
+    addTeams(vals);
     console.log(s.target.innerHTML);
   };
 

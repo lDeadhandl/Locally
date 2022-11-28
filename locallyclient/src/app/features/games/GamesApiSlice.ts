@@ -27,10 +27,14 @@ export const apiSlice = createApi({
           return "/Teams";
         },
       }),
-      addFavoriteTeams: builder.query<void, string>({
-        query(name = "", team = "") {
+
+      addFavoriteTeams: builder.mutation<void, { name: string; team: string }>({
+        query(data) {
           console.log("im hit");
-          return `Favorites/${name}/${team}`;
+          return {
+            url: `Favorites/${data.name}/${data.team}`,
+            method: "POST",
+          };
         },
       }),
     };
@@ -40,5 +44,5 @@ export const apiSlice = createApi({
 export const {
   useFetchDailyGamesQuery,
   useFetchTeamsQuery,
-  useAddFavoriteTeamsQuery,
+  useAddFavoriteTeamsMutation,
 } = apiSlice;
