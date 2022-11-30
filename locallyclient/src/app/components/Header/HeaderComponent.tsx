@@ -12,7 +12,7 @@ const Header = () => {
   const [message, setMessage] = useState("");
 
   const { data = [], isFetching } = useFetchTeamsQuery();
-  const [addTeams, isloading] = useAddFavoriteTeamsMutation();
+  const [addTeams, status] = useAddFavoriteTeamsMutation();
 
   // TODO: fix -> when backspacing last letter it displays all the teams
   const handleChange = (event: any) => {
@@ -31,20 +31,22 @@ const Header = () => {
 
   return (
     <div className="App-header">
-      <span className="App-header-logo">Logo.</span>
-      <span className="App-header-burger"></span>
-      <div className="search-wrapper">
-        <input
-          type="search"
-          id="search"
-          placeholder="search for teams"
-          onChange={handleChange}
-        ></input>
-        {teams.map((team) => (
-          <li className="items" onClick={(x) => handleClick(x)}>
-            {team.name}
-          </li>
-        ))}
+      <div className="App-header-logo">Logo.</div>
+      <div className="App-header-search-burger">
+        <div className="search-wrapper">
+          <input
+            type="search"
+            id="search"
+            placeholder="search for teams"
+            onChange={handleChange}
+          ></input>
+          {teams.map((team) => (
+            <li className="items" onClick={(x) => handleClick(x)}>
+              {team.name}
+            </li>
+          ))}
+        </div>
+        <div className="App-header-burger">+</div>
       </div>
     </div>
   );

@@ -10,12 +10,17 @@ import GameCard from "../GameCard/GameCardComponent";
 const Dashboard = () => {
   const [games, setGames] = useState<IGame[]>([]);
   const [isClicked, setIsClicked] = useState(false);
-  const { data = [], isFetching } = useFetchDailyGamesQuery("stef");
+  const {
+    data = [],
+    isFetching,
+    refetch,
+  } = useFetchDailyGamesQuery("stef", {});
 
   const dispatch = useAppDispatch();
 
   // console.log(data);
   const handleClick = () => {
+    refetch();
     dispatch(addGames(data));
     setGames(data);
   };

@@ -1,0 +1,22 @@
+{
+  "id": "ef6455d0-7dd4-421c-ba0a-2fa8e57c4de3",
+  "status": "closed",
+  "duration": "2:32",
+  "clock": "00:00",
+  "quarter": 4,
+  "clock_decimal": "00:00",
+  "home": {
+    "name": "Mavericks",
+    "alias": "DAL",
+    "market": "Dallas",
+    "id": "583ecf50-fb46-11e1-82cb-f4ce4684ea4c",
+    "points": 116
+  },
+  "away": {
+    "name": "Warriors",
+    "alias": "GSW",
+    "market": "Golden State",
+    "id": "583ec825-fb46-11e1-82cb-f4ce4684ea4c",
+    "points": 113
+  }
+}
