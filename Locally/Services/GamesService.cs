@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using static System.Net.WebRequestMethods;
 
 namespace Locally.Services
 {
@@ -13,9 +14,10 @@ namespace Locally.Services
         private readonly IMongoCollection<Game> _gamesCollection;
         private JsonSerializerSettings _serializerSettings;
         private readonly UserService _userService;
+        private readonly TeamsService _teamsService;
         private HttpClient _client;
 
-        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings, UserService userService)
+        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings, UserService userService, TeamsService teamsService)
         {
             // Set the serializer settings to the snake case which is what the spotify responses are formatted as
             _serializerSettings = new JsonSerializerSettings
@@ -28,6 +30,7 @@ namespace Locally.Services
 
             _client = new HttpClient();
             _userService = userService;
+            _teamsService = teamsService;   
 
 
             var mongoClient = new MongoClient(
@@ -65,20 +68,49 @@ namespace Locally.Services
                 return new List<Game>();
             }
 
+            
             var tempGames = new List<Game>();
 
             foreach (var t in favoriteTeams)
             {
-                var awayGames = games.FirstOrDefault(x => x.Away.Id == t.Id);
-                var homeGames = games.FirstOrDefault(x => x.Home.Id == t.Id);
-                tempGames.Add(awayGames);
-                tempGames.Add(homeGames);
+                // use favorite team id to check if it matches home/away team
+                var game = games.FirstOrDefault(x => x.Away?.Id == t.Id || x.Home?.Id == t.Id);
+                tempGames.Add(game);
             }
 
-            var dashboardGames = tempGames.Distinct().ToList().Where(x => x != null).ToList();
+            var dashboardGames = tempGames.Distinct().ToList().Where(x => x != null && (x.Status != "inprogress" || x.Status != "closed")).ToList();
+            var liveGames = new List<Game>();
 
+            Thread.Sleep(1000);
+            foreach (var game in dashboardGames)
+            {
+                if(game.Status != "scheduled")
+                    continue;
+
+                var liveGameJson = await _client.GetStringAsync($"http://api.sportradar.us/nba/trial/v7/en/games/6d2c3191-8604-4026-84d3-32f36d042a8e/boxscore.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
+                var liveGame = JsonConvert.DeserializeObject<Game>(liveGameJson, _serializerSettings);
+                liveGames.Add(liveGame);
+                Thread.Sleep(1000);
+            }
+
+            dashboardGames.AddRange(liveGames);
             //var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
             //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
+
+            Thread.Sleep(1000);
+
+            var allTeams = await _teamsService.GetTeams();
+            foreach (var game in dashboardGames)
+            {
+                var homeTeam = allTeams.Find(x => x.Id == game.Home.Id);
+                game.Home.Wins = homeTeam.Wins;
+                game.Home.Losses = homeTeam.Losses;
+
+                var awayTeam = allTeams.Find(x => x.Id == game.Away.Id);
+                game.Away.Wins = homeTeam.Wins;
+                game.Away.Losses = homeTeam.Losses;
+
+            }
 
             return dashboardGames;
         }
