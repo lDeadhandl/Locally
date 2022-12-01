@@ -12,22 +12,35 @@ export interface IGameCardProps {
 
 export const GameCard: FC<IGameCardProps> = (game) => {
   const g = useAppSelector((state) => state.counter.games);
-  const teamName = "CavsLogo";
-  console.log(g);
+  const homeTeam = game.game.home.name.split(" ").pop();
+  const awayTeam = game.game.away.name.split(" ").pop();
+
+  // console.log(g);
+
+  console.log();
+
   return (
     <div className="dashboard-card">
       <div className="card-content-top">
         <div className="card-score">54</div>
-        <img className="card-logo" src={`/src/app/assets/${teamName}.png`} />
+        <img
+          className="card-logo"
+          src={`/src/app/assets/NBALogos/${homeTeam}.png`}
+        />
         <div className="card-record">
-          Cavaliers<br></br> (11-13)
+          {homeTeam}
+          <br></br> (11-13)
         </div>
       </div>
       <div className="card-content-bottom">
         <div className="card-score">66</div>
-        <img className="card-logo" src={HeatLogo} />
+        <img
+          className="card-logo"
+          src={`/src/app/assets/NBALogos/${awayTeam}.png`}
+        />
         <div className="card-record">
-          Atlanta Hawks<br></br> (11-13)
+          {awayTeam}
+          <br></br> (11-13)
         </div>
       </div>
       <span className="card-time">Q4 3:11</span>

@@ -27,10 +27,21 @@ input {
   font-size: 1rem;
 }
 
+.items-list {
+  min-width: 253px;
+  position: fixed;
+  text-align: left;
+  right: 37px;
+  margin: -5px 0px;
+  height: 0px;
+}
+
 .items {
   display: flex;
   border: 1px solid grey;
   color: white;
   font-size: 1rem;
   padding: 0.25rem;
+  z-index: 1;
+  background-color: black;
 }

@@ -19,7 +19,7 @@ export const apiSlice = createApi({
         query(name = "") {
           return `/Games?name=${name}&year=${currentDate.getFullYear()}&month=${
             currentDate.getMonth() + 1
-          }&day=${currentDate.getDate()}`;
+          }&day=2`;
         },
       }),
       fetchTeams: builder.query<ITeam[], void>({

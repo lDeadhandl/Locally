@@ -10,6 +10,7 @@ import "./SearchInput.css";
 const Header = () => {
   const [teams, setTeams] = useState<ITeam[]>([]);
   const [message, setMessage] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
 
   const { data = [], isFetching } = useFetchTeamsQuery();
   const [addTeams, status] = useAddFavoriteTeamsMutation();
@@ -19,7 +20,7 @@ const Header = () => {
     var teamList = data.filter((x) =>
       x.name.toLowerCase().includes(event.target.value.toLowerCase())
     );
-
+    event.target.value.length > 0 ? setShowSearch(true) : setShowSearch(false);
     setTeams(teamList);
   };
 
@@ -34,17 +35,26 @@ const Header = () => {
       <div className="App-header-logo">Logo.</div>
       <div className="App-header-search-burger">
         <div className="search-wrapper">
-          <input
-            type="search"
-            id="search"
-            placeholder="search for teams"
-            onChange={handleChange}
-          ></input>
-          {teams.map((team) => (
-            <li className="items" onClick={(x) => handleClick(x)}>
-              {team.name}
-            </li>
-          ))}
+          <div style={{ display: "flex" }}>
+            <input
+              type="search"
+              id="search"
+              placeholder="search for teams"
+              onChange={handleChange}
+            ></input>
+          </div>
+          <div
+            style={{ display: showSearch ? "block" : "none" }}
+            className="items-list"
+          >
+            <ul>
+              {teams.map((team) => (
+                <li className="items" onClick={(x) => handleClick(x)}>
+                  {team.name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="App-header-burger">+</div>
       </div>
