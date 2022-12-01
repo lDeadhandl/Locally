@@ -22,28 +22,30 @@ export const GameCard: FC<IGameCardProps> = (game) => {
   return (
     <div className="dashboard-card">
       <div className="card-content-top">
-        <div className="card-score">54</div>
+        <div className="card-score">{game.game.home.points}</div>
         <img
           className="card-logo"
           src={`/src/app/assets/NBALogos/${homeTeam}.png`}
         />
         <div className="card-record">
           {homeTeam}
-          <br></br> (11-13)
+          <br></br> ({game.game.home.wins}-{game.game.home.losses})
         </div>
       </div>
       <div className="card-content-bottom">
-        <div className="card-score">66</div>
+        <div className="card-score">{game.game.away.points}</div>
         <img
           className="card-logo"
           src={`/src/app/assets/NBALogos/${awayTeam}.png`}
         />
         <div className="card-record">
           {awayTeam}
-          <br></br> (11-13)
+          <br></br> ({game.game.away.wins}-{game.game.away.losses})
         </div>
       </div>
-      <span className="card-time">Q4 3:11</span>
+      <span className="card-time">
+        Q{game.game.quarter} {game.game.clock}
+      </span>
     </div>
   );
 };

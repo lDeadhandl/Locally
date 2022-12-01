@@ -18,6 +18,7 @@ const Dashboard = () => {
 
   const dispatch = useAppDispatch();
 
+  console.log(data);
   // console.log(data);
   const handleClick = () => {
     refetch();
