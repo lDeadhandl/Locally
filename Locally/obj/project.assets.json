@@ -1128,26 +1128,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Stefan Vladetic\\.nuget\\packages\\": {}
+    "/Users/stefanvladetic/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\Locally.csproj",
+      "projectUniqueName": "/Users/stefanvladetic/Code/Locally/Locally/Locally.csproj",
       "projectName": "Locally",
-      "projectPath": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\Locally.csproj",
-      "packagesPath": "C:\\Users\\Stefan Vladetic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\obj\\",
+      "projectPath": "/Users/stefanvladetic/Code/Locally/Locally/Locally.csproj",
+      "packagesPath": "/Users/stefanvladetic/.nuget/packages/",
+      "outputPath": "/Users/stefanvladetic/Code/Locally/Locally/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Stefan Vladetic\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/stefanvladetic/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1202,7 +1204,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

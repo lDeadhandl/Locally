@@ -34,6 +34,7 @@ namespace Locally.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
+            // TODO: should be called once a day to update team records
             var teams = await _teamsService.GetTeams();
 
             if (teams is null)
