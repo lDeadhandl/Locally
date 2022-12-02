@@ -15,7 +15,8 @@ const Header = () => {
   const { data = [], isFetching } = useFetchTeamsQuery();
   const [addTeams, status] = useAddFavoriteTeamsMutation();
 
-  // TODO: fix -> when backspacing last letter it displays all the teams
+  //TODO: make search bar pretty
+  // When a favorite is added change a piece of global state (favoriteTeams) and force dashboard to refetch that team
   const handleChange = (event: any) => {
     var teamList = data.filter((x) =>
       x.name.toLowerCase().includes(event.target.value.toLowerCase())

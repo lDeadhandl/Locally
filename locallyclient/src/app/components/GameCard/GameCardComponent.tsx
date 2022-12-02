@@ -15,8 +15,8 @@ export const GameCard: FC<IGameCardProps> = (game) => {
   const homeTeam = game.game.home.name.split(" ").pop();
   const awayTeam = game.game.away.name.split(" ").pop();
 
-  // console.log(g);
-
+  // based off of game status create "upcoming", "live", or "empty" card
+  // TODO: clean up card when score is triple digits
   console.log();
 
   return (

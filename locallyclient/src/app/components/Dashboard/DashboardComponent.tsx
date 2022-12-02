@@ -29,6 +29,10 @@ const Dashboard = () => {
     setGames(data);
   }, [isClicked]);
 
+  // TODO: filter scheduled and inprogress games then create inprogress jsx then scheduled conditionally
+  // Pass each game in as props, the gamecard can check the status and decide to make an upcoming or live game card or empty
+  // Find a way to have 4 blank game cards that get replaced when there is data
+  // REMOVE BUTTON, data should load when dashboard is opened, ADD SPINNER while isFetching == true
   return (
     <div className="dashboard-section">
       {games.map((game) => (
