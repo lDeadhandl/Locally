@@ -1,33 +1,52 @@
 .dashboard-section {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px 19px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* margin: 0px 19px; */
 }
 
 .dashboard-card {
-  display: flex;
+  display: grid;
+  grid-template-rows: 10% 35% 35% 20%;
   background-color: #303034;
   border-radius: 18px;
-  width: 10.5rem;
-  height: 20rem;
+  height: 360px;
   white-space: normal;
   margin: 10px 10px;
 }
 
-.card-content-left {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(0, 255, 255, 0.108);
-  width: 40%;
-  height: 80%;
+.card-content-top {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 2fr 3fr 25px;
+  grid-row-start: 2;
 }
 
-.card-content-right {
-  display: flex;
-  width: 60%;
-  height: 20rem;
+.card-content-bottom {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 2fr 3fr 25px;
+  grid-row-start: 3;
 }
 
-.card-scores {
-  height: 20rem;
+.card-score {
+  margin: auto;
+  margin-left: 25px;
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.card-record {
+  grid-column: 2;
+}
+
+.card-logo {
+  margin: auto;
+  height: 30px;
+}
+
+.card-time {
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  margin: auto;
+  grid-row-start: 4;
 }

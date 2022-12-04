@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IGame } from "../../types/types";
+import { IGame, ITeam } from "../../types/types";
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -11,16 +11,38 @@ export const apiSlice = createApi({
     //   return headers;
     // },
   }),
-  endpoints(builder) {
+  endpoints: (builder) => {
+    var currentDate = new Date();
     return {
       // query<returntype, arguements we're passing in for parameter generator>
       fetchDailyGames: builder.query<IGame[], string | void>({
         query(name = "") {
-          return `/Games?name=${name}&year=2022&month=11&day=23`;
+          return `/Games?name=${name}&year=${currentDate.getFullYear()}&month=${
+            currentDate.getMonth() + 1
+          }&day=0${currentDate.getDate().toString().slice(-2)}`;
+        },
+      }),
+      fetchTeams: builder.query<ITeam[], void>({
+        query() {
+          return "/Teams";
+        },
+      }),
+
+      addFavoriteTeams: builder.mutation<void, { name: string; team: string }>({
+        query(data) {
+          console.log("im hit");
+          return {
+            url: `Favorites/${data.name}/${data.team}`,
+            method: "POST",
+          };
         },
       }),
     };
   },
 });
 
-export const { useFetchDailyGamesQuery } = apiSlice;
+export const {
+  useFetchDailyGamesQuery,
+  useFetchTeamsQuery,
+  useAddFavoriteTeamsMutation,
+} = apiSlice;

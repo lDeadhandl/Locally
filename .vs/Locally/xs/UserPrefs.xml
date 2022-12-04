@@ -1,35 +1,35 @@
 ﻿<Properties StartupConfiguration="{4F0FD62C-6B65-4D86-9BE3-D275BEC95DFF}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/stefanvladetic/Code/Locally/Locally/Services/GamesService.cs" relfile="Locally/Services/GamesService.cs" line="90" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Locally PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Locally/Controllers/TeamsController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Locally/Program.cs">
     <Files>
       <File FileName="Locally/Controllers/UserController.cs" />
-      <File FileName="Locally/Services/GamesService.cs" />
       <File FileName="Locally/Controllers/GamesController.cs" />
       <File FileName="Locally/Models/Home.cs" />
       <File FileName="Locally/Services/UserService.cs" />
-      <File FileName="Locally/Data/User.cs" />
-      <File FileName="Locally/Controllers/TeamsController.cs" Line="18" Column="63" />
-      <File FileName="Locally/Services/TeamsService.cs" Line="31" Column="58" />
-      <File FileName="Locally/Models/TeamsObject.cs" />
+      <File FileName="Locally/Controllers/TeamsController.cs" />
+      <File FileName="Locally/Services/TeamsService.cs" />
       <File FileName="Locally/Models/GamesObject.cs" />
-      <File FileName="Locally/Models/DivisionsObject.cs" />
       <File FileName="Locally/Models/Away.cs" />
-      <File FileName="Locally/Models/ConferencesObject.cs" Line="14" Column="6" />
-      <File FileName="Locally/Program.cs" Line="16" Column="36" />
+      <File FileName="Locally/Models/ConferencesObject.cs" />
+      <File FileName="Locally/Controllers/FavoritesController.cs" />
+      <File FileName="Locally/Program.cs" Line="51" Column="1" />
+      <File FileName="Locally/Services/GamesService.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Locally" expanded="True">
             <Node name="Locally" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="TeamsController.cs" selected="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Data" expanded="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True" />
@@ -37,12 +37,8 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Locally PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

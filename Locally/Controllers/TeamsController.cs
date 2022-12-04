@@ -16,7 +16,7 @@ namespace Locally.Controllers
 
         [HttpGet]
         public async Task<List<Team>> Get() =>
-            await _teamsService.GetAsync();
+            await _teamsService.GetTeams();
 
         [HttpGet("{name}")]
         public async Task<ActionResult<Team>> Get(string name)
@@ -34,6 +34,7 @@ namespace Locally.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
+            // TODO: should be called once a day to update team records
             var teams = await _teamsService.GetTeams();
 
             if (teams is null)

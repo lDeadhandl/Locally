@@ -1,17 +1,47 @@
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 35px;
+  font-weight: 600;
+  height: 100px;
+}
+
 .App-header-logo {
   color: white;
 }
 
+.App-header-search-burger {
+  display: flex;
+}
 .App-header-burger {
   color: white;
 }
 
-.App-header {
+.search-wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 35px;
-  font-weight: 600;
-  height: 100px;
-  margin: 0 48px;
+  flex-direction: column;
+}
+
+input {
+  font-size: 1rem;
+}
+
+.items-list {
+  min-width: 253px;
+  position: fixed;
+  text-align: left;
+  right: 37px;
+  margin: -5px 0px;
+  height: 0px;
+}
+
+.items {
+  display: flex;
+  border: 1px solid grey;
+  color: white;
+  font-size: 1rem;
+  padding: 0.25rem;
+  z-index: 1;
+  background-color: black;
 }

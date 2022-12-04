@@ -5,17 +5,19 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using static System.Net.WebRequestMethods;
 
 namespace Locally.Services
 {
-	public class GamesService
-	{
+    public class GamesService
+    {
         private readonly IMongoCollection<Game> _gamesCollection;
         private JsonSerializerSettings _serializerSettings;
         private readonly UserService _userService;
+        private readonly TeamsService _teamsService;
         private HttpClient _client;
 
-        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings, UserService userService)
+        public GamesService(IOptions<LocallyDatabaseSettings> LocallyDatabaseSettings, UserService userService, TeamsService teamsService)
         {
             // Set the serializer settings to the snake case which is what the spotify responses are formatted as
             _serializerSettings = new JsonSerializerSettings
@@ -28,6 +30,7 @@ namespace Locally.Services
 
             _client = new HttpClient();
             _userService = userService;
+            _teamsService = teamsService;
 
 
             var mongoClient = new MongoClient(
@@ -39,58 +42,87 @@ namespace Locally.Services
             _gamesCollection = mongoDatabase.GetCollection<Game>(
                 LocallyDatabaseSettings.Value.GamesCollectionName);
         }
-            
-        public async Task<GamesObject> GetGames()
+
+        public async Task<List<Game>> GetGames()
         {
             var gamesJson = await _client.GetStringAsync("http://api.sportradar.us/nba/trial/v7/en/games/2022/REG/schedule.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
-            var Games = JsonConvert.DeserializeObject<GamesObject>(gamesJson, _serializerSettings);
+            var games = JsonConvert.DeserializeObject<GamesObject>(gamesJson, _serializerSettings).Games;
+            var gamesWithESTSchedule = new List<Game>();
 
-            //var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
+            foreach (var game in games)
+            {
+                // Converts from ISO 8601 -> EST
+                game.Scheduled = DateTime.Parse(game.Scheduled, null, System.Globalization.DateTimeStyles.RoundtripKind).ToLocalTime().ToString();
+            }
 
-            return Games;
+            return games;
         }
 
         public async Task<List<Game>> GetDailyGames(string name, string year, string month, string day)
         {
-            var gamesJson = await _client.GetStringAsync($"http://api.sportradar.us/nba/trial/v7/en/games/{year}/{month}/{day}/schedule.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
-            var games = JsonConvert.DeserializeObject<GamesObject>(gamesJson, _serializerSettings).Games;
-
             var user = await _userService.GetAsync(name);
-
             var favoriteTeams = user.Favorites?.Teams;
 
             if (favoriteTeams == null)
-            {
                 return new List<Game>();
-            }
 
-            var tempGames = new List<Game>();
+            // Grabs games from DB instead of having to grab the daily schedule from the api 
+            var schedule = await GetAsync();
+            var games = schedule.FindAll(x => x.Scheduled.Contains($"{year}-{month}-{day}")); // day must contain leading 0
 
-            foreach (var t in favoriteTeams)
+            var favoriteGames = new List<Game>();
+
+            // Gets users favorite games from daily schedule
+            foreach (var team in favoriteTeams)
             {
-                var awayGames = games.FirstOrDefault(x => x.Away.Id == t.Id);
-                var homeGames = games.FirstOrDefault(x => x.Home.Id == t.Id);
-                tempGames.Add(awayGames);
-                tempGames.Add(homeGames);
+                var game = games.FirstOrDefault(x => x.Away?.Id == team.Id || x.Home?.Id == team.Id);
+                favoriteGames.Add(game);
             }
 
-            var dashboardGames = tempGames.Distinct().ToList().Where(x => x != null).ToList();
 
-            //var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-            //Games?.Games?.ForEach(x => x.Scheduled = TimeZoneInfo.ConvertTimeFromUtc(x.Scheduled, easternZone));
+            // Create list of schedule and upcoming games
+            var upcomingGames = favoriteGames.Distinct().ToList().Where(x => x != null && x.Status == "scheduled").ToList();
+            var liveGames = favoriteGames.Distinct().ToList().Where(x => x != null && x.Status == "inprogress").ToList();
 
-            return dashboardGames;
+            foreach (var game in liveGames)
+            {
+                var liveGameJson = await _client.GetStringAsync($"http://api.sportradar.us/nba/trial/v7/en/games/{game.Id}/boxscore.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
+                var liveGame = JsonConvert.DeserializeObject<Game>(liveGameJson, _serializerSettings);
+                upcomingGames.Add(liveGame);
+                Thread.Sleep(1000);
+            }
+
+            // Adds records to both teams in games
+            var allTeams = await _teamsService.GetTeams();
+            AddRecords(upcomingGames, allTeams);
+
+            return upcomingGames;
         }
 
         public async Task<List<Game>> GetAsync() =>
             await _gamesCollection.Find(_ => true).ToListAsync();
 
-        //public async Task<Team?> GetAsync(string name) =>
-        //    await _teamsCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
-        
-        public async Task CreateAsync(GamesObject newGame) =>
-            await _gamesCollection.InsertManyAsync(newGame.Games);
+        //public async Task<List<Game>> GetAsync(string date) =>
+        //    await _gamesCollection.Find(x => x.Scheduled.Contains(date)).ToListAsync();
+
+        public async Task CreateAsync(List<Game> newGames) =>
+            await _gamesCollection.InsertManyAsync(newGames);
+
+        private void AddRecords(List<Game> games, List<Team> teams) {
+
+            foreach (var game in games)
+            {
+                var homeTeam = teams.Find(x => x.Id == game.Home.Id);
+                game.Home.Wins = homeTeam.Wins;
+                game.Home.Losses = homeTeam.Losses;
+
+                var awayTeam = teams.Find(x => x.Id == game.Away.Id);
+                game.Away.Wins = awayTeam.Wins;
+                game.Away.Losses = awayTeam.Losses;
+
+            }
+        }
+
     }
 }
 
