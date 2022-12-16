@@ -23,6 +23,11 @@ namespace Locally.Controllers
         //public async Task<List<User>> Get() =>
         //    await _userService.GetAsync();
 
+        /// <summary>
+        /// This does this
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         [HttpGet("{username}")]
         public async Task<ActionResult<Favorites?>> Get(string username)
         {

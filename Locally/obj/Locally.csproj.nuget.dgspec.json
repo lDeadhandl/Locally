@@ -1,28 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/stefanvladetic/Code/Locally/Locally/Locally.csproj": {}
+    "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\Locally.csproj": {}
   },
   "projects": {
-    "/Users/stefanvladetic/Code/Locally/Locally/Locally.csproj": {
+    "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\Locally.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/stefanvladetic/Code/Locally/Locally/Locally.csproj",
+        "projectUniqueName": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\Locally.csproj",
         "projectName": "Locally",
-        "projectPath": "/Users/stefanvladetic/Code/Locally/Locally/Locally.csproj",
-        "packagesPath": "/Users/stefanvladetic/.nuget/packages/",
-        "outputPath": "/Users/stefanvladetic/Code/Locally/Locally/obj/",
+        "projectPath": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\Locally.csproj",
+        "packagesPath": "C:\\Users\\Stefan Vladetic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/stefanvladetic/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Stefan Vladetic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -51,7 +50,7 @@
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[13.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -77,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

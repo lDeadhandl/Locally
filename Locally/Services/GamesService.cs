@@ -45,7 +45,7 @@ namespace Locally.Services
 
         public async Task<List<Game>> GetGames()
         {
-            var gamesJson = await _client.GetStringAsync("http://api.sportradar.us/nba/trial/v7/en/games/2022/REG/schedule.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
+            var gamesJson = await _client.GetStringAsync("http://api.sportradar.us/nba/trial/v7/en/games/2022/REG/schedule.json?api_key=vuapnznjuxqf58twwc8tbzva");
             var games = JsonConvert.DeserializeObject<GamesObject>(gamesJson, _serializerSettings).Games;
             var gamesWithESTSchedule = new List<Game>();
 
@@ -86,7 +86,7 @@ namespace Locally.Services
 
             foreach (var game in liveGames)
             {
-                var liveGameJson = await _client.GetStringAsync($"http://api.sportradar.us/nba/trial/v7/en/games/{game.Id}/boxscore.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
+                var liveGameJson = await _client.GetStringAsync($"http://api.sportradar.us/nba/trial/v7/en/games/{game.Id}/boxscore.json?api_key=vuapnznjuxqf58twwc8tbzva");
                 var liveGame = JsonConvert.DeserializeObject<Game>(liveGameJson, _serializerSettings);
                 upcomingGames.Add(liveGame);
                 Thread.Sleep(1000);

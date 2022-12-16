@@ -38,7 +38,7 @@ namespace Locally.Services
 
         public async Task<List<Team>> GetTeams()
         {
-            var conferencesJson = await _client.GetStringAsync("http://api.sportradar.us/nba/trial/v7/en/seasons/2022/REG/standings.json?api_key=3cdz4guhu3umeppcp8xf3wrr");
+            var conferencesJson = await _client.GetStringAsync("http://api.sportradar.us/nba/trial/v7/en/seasons/2022/REG/standings.json?api_key=vuapnznjuxqf58twwc8tbzva");
             var Conferences = JsonConvert.DeserializeObject<ConferencesObject>(conferencesJson, _serializerSettings);
 
             var teams = new List<Team>();

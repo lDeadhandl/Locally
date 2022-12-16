@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Locally</name>
+    </assembly>
+    <members>
+        <member name="M:Locally.Controllers.FavoritesController.Get(System.String)">
+            <summary>
+            This does this
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

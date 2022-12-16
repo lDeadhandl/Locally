@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "Dw9KXTuv0ub69FhMBpbiF+8q9GyKWsJHFstzV8fIykQ=",
+  "Hash": "ALzcQXvMINv8y/OQHQZl22gBoMe32hXluR7Uge33AmE=",
   "Source": "Locally",
   "BasePath": "_content/Locally",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Locally\\wwwroot",
+      "Source": "Locally",
+      "ContentRoot": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\wwwroot\\",
+      "BasePath": "_content/Locally",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\wwwroot\\swagger-ui\\SwaggerDark.css",
+      "SourceId": "Locally",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stefan Vladetic\\Code\\Locally\\Locally\\wwwroot\\",
+      "BasePath": "_content/Locally",
+      "RelativePath": "swagger-ui/SwaggerDark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger-ui\\SwaggerDark.css"
+    }
+  ]
 }
